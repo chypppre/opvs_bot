@@ -1,0 +1,2 @@
+  File "./bot.py", line 24
+SyntaxError: Non-ASCII character '\xd0' in file ./bot.py on line 24, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details

@@ -4,21 +4,22 @@ import sqlite3
 # Токен бота
 TOKEN = "806413118:AAG1xI4msHZ2RG26UzaN9q3LUI6fzIjwqtY"
 
-DB_DIR = "home\\irc\\bot\\svetofor.db"
-REPORTS_DIR = "home\\irc\\bot\\reports\\"
-PICS_DIR = "home\\irc\\bot\\pics\\"
-OO_DIR = "home\\irc\\bot\\oo\\"
+DB_DIR = "/home/irc/bot/svetofor.db"
+REPORTS_DIR = "/home/irc/bot/reports/"
+PICS_DIR = "/home/irc/bot/pics/"
+OO_DIR = "/home/irc/bot/oo/"
 
 # ИД чатов,
 CHATS_ID = [-1001153489953, #Экстерн,        0
 #            -1001352463732, #экспертов ALL,  1
-            -1001153489953, #ОПВС-ЭПС,       2
+           # -1001153489953, #ОПВС-ЭПС,       2
 #            -1001428933815, #ОЛЕГ,           3
 #            -1001389171690, #НАСТАВНИКИ      4
 #            -1001381826391, #ФМС + Отелька   5
 #            -1001221634075, #КБухгалтерия    6
 #            -1001231841324] #Эльба           7
-
+]
+    
 mydb = sqlite3.connect(DB_DIR)
 
 # БЕРЕМ СПИСОК КОНСУЛЬТАНТОВ ПРИ ЗАПУСКЕ БОТА

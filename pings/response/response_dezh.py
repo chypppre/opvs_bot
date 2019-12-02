@@ -224,15 +224,15 @@ def response_dezh(bot, call):
             
         elif call.data == "response_dezh_reboot_yes":
             # Ответ в личку пингующему
-            cons_text = '{} ответил, что можно перезагружать. Если что, я тут: {}.'.format(responser_full_name, responser_adress)
-            super_text = '{} одобрил перезагрузку {}.'.format(responser_full_name, cons_full_name)
+            cons_text = '{} ответил, что можно супервизиться. Если что, я тут: {}.'.format(responser_full_name, responser_adress)
+            super_text = '{} одобрил супервизию {}.'.format(responser_full_name, cons_full_name)
             d_type = 'reboot_yes'
             console_text = "Ответ получен от {}\n".format(responser_full_name)
 
         elif call.data == "response_dezh_reboot_no":
             # Ответ в личку пингующему
-            cons_text = '{} ответил, что пока нельзя перезагружаться. Если что, я тут: {}.'.format(responser_full_name, responser_adress)
-            super_text = '{} отклонил перезагрузку у {}.'.format(responser_full_name, cons_full_name)
+            cons_text = '{} ответил, что пока нельзя супервизиться. Если что, я тут: {}.'.format(responser_full_name, responser_adress)
+            super_text = '{} отклонил супервизию у {}.'.format(responser_full_name, cons_full_name)
             d_type = 'reboot_no'
             console_text = "Ответ получен от {}\n".format(responser_full_name)
             

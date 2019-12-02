@@ -23,15 +23,15 @@ def add_to_tempo(uid, last_name, first_name, department):
 def send_add_request(bot, uid):
     """Отправить запрос с данными в бота"""
     kbrd = types.InlineKeyboardMarkup()
-    uc_btn = types.InlineKeyboardButton(text="УЦ", callback_data="add_uc")
-    uc_helper_btn = types.InlineKeyboardButton(text="Пом.УЦ", callback_data="add_uc_helper")
-    uc_super_btn = types.InlineKeyboardButton(text="Супер.УЦ", callback_data="add_uc_super")
-    kb_btn = types.InlineKeyboardButton(text="КБухглатерия", callback_data="add_kb")
-    kb_helper_btn = types.InlineKeyboardButton(text="Пом.КБухглатерия", callback_data="add_kb_helper")
-    kb_super_btn = types.InlineKeyboardButton(text="Супер.КБухглатерия", callback_data="add_kb_super")
-    elba_btn = types.InlineKeyboardButton(text="Эльба", callback_data="add_elba")
-    elba_helper_btn = types.InlineKeyboardButton(text="Пом.Эльба", callback_data="add_elba_helper")
-    elba_super_btn = types.InlineKeyboardButton(text="Супер.Эльба", callback_data="add_elba_super")
+    uc_btn = types.InlineKeyboardButton(text="КЭ", callback_data="add_uc")
+    uc_helper_btn = types.InlineKeyboardButton(text="Пом.КЭ", callback_data="add_uc_helper")
+    uc_super_btn = types.InlineKeyboardButton(text="Супер.КЭ", callback_data="add_uc_super")
+    #kb_btn = types.InlineKeyboardButton(text="КБухглатерия", callback_data="add_kb")
+    #kb_helper_btn = types.InlineKeyboardButton(text="Пом.КБухглатерия", callback_data="add_kb_helper")
+    #kb_super_btn = types.InlineKeyboardButton(text="Супер.КБухглатерия", callback_data="add_kb_super")
+    #elba_btn = types.InlineKeyboardButton(text="Эльба", callback_data="add_elba")
+    #elba_helper_btn = types.InlineKeyboardButton(text="Пом.Эльба", callback_data="add_elba_helper")
+    #elba_super_btn = types.InlineKeyboardButton(text="Супер.Эльба", callback_data="add_elba_super")
     # fms_btn = types.InlineKeyboardButton(text="ФМС", callback_data="add_fms")
     # fms_helper_btn = types.InlineKeyboardButton(text="Пом.ФМС", callback_data="add_fms_helper")
     # fms_super_btn = types.InlineKeyboardButton(text="Супер.ФМС", callback_data="add_fms_super")
@@ -87,7 +87,7 @@ def add_user(bot, call):
             cursor.execute(sql) 
             bot.send_message(
                     chat_id=uid,
-                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Екб/Влг, ххх кабинет'.")
+                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Врн, ххх опенспейс'.")
         
         elif call.data == "add_kb":
             sql = """INSERT INTO staff (uid, department, last_name, first_name)
@@ -95,7 +95,7 @@ def add_user(bot, call):
             cursor.execute(sql) 
             bot.send_message(
                     chat_id=uid,
-                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Екб, ххх кабинет'.")
+                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Врн, ххх опенспейс'.")
 
         elif call.data == "add_elba":
             sql = """INSERT INTO staff (uid, department, last_name, first_name)
@@ -103,7 +103,7 @@ def add_user(bot, call):
             cursor.execute(sql) 
             bot.send_message(
                     chat_id=uid,
-                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Екб, ххх кабинет'.")
+                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Врн, ххх опенспейс'.")
 
         # elif call.data == "add_fms":
         #     sql = """INSERT INTO staff (uid, department, last_name, first_name)
@@ -129,8 +129,8 @@ def add_user(bot, call):
                 pass
             bot.send_message(
                     chat_id=uid,
-                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Екб/Влг, ххх кабинет' и "\
-                    "Установить помогаторский адрес Екб/Влг, ххх кабинет'.")
+                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Врн, ххх опенспейс' и "\
+                    "Установить помогаторский адрес Врн, ххх опенспейс'.")
 
         elif call.data == "add_kb_helper":
             try:
@@ -144,8 +144,8 @@ def add_user(bot, call):
                 pass
             bot.send_message(
                     chat_id=uid,
-                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Екб, ххх кабинет' и "\
-                    "Установить помогаторский адрес Екб, ххх кабинет'.")
+                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Врн, ххх опенспейс' и "\
+                    "Установить помогаторский адрес Врн, ххх опенспейс'.")
 
         elif call.data == "add_elba_helper":
             try:
@@ -159,8 +159,8 @@ def add_user(bot, call):
                 pass
             bot.send_message(
                     chat_id=uid,
-                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Екб, ххх кабинет' и "\
-                    "Установить помогаторский адрес Екб, ххх кабинет'.")
+                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Врн, ххх опенспейс' и "\
+                    "Установить помогаторский адрес Врн, ххх опенспейс'.")
         
         # elif call.data == "add_fms_helper":
         #     sql = """INSERT INTO helpers (uid, department, last_name, first_name)
@@ -182,8 +182,8 @@ def add_user(bot, call):
                 pass
             bot.send_message(
                     chat_id=uid,
-                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Екб/Влг, ххх кабинет' и "\
-                    "Установить помогаторский адрес Екб/Влг, ххх кабинет'.")
+                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Врн, ххх опенспейс' и "\
+                    "Установить помогаторский адрес Врн, ххх опенспейс'.")
         
         elif call.data == "add_uc_super":
             try:
@@ -197,8 +197,8 @@ def add_user(bot, call):
                 pass
             bot.send_message(
                     chat_id=uid,
-                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Екб/Влг, ххх кабинет' и "\
-                    "Установить супервизорский адрес Екб/Влг, ххх кабинет'.") 
+                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Врн, ххх опенспейс' и "\
+                    "Установить помогаторский адрес Врн, ххх опенспейс'.") 
 
         elif call.data == "add_kb_super":
             try:
@@ -212,8 +212,8 @@ def add_user(bot, call):
                 pass
             bot.send_message(
                     chat_id=uid,
-                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Екб/Влг, ххх кабинет' и "\
-                    "Установить супервизорский адрес Екб/Влг, ххх кабинет'.")     
+                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Врн, ххх опенспейс' и "\
+                    "Установить помогаторский адрес Врн, ххх опенспейс'.")     
 
         elif call.data == "add_elba_super":
             try:
@@ -227,8 +227,8 @@ def add_user(bot, call):
                 pass
             bot.send_message(
                     chat_id=uid,
-                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Екб/Влг, ххх кабинет' и "\
-                    "Установить супервизорский адрес Екб/Влг, ххх кабинет'.")
+                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Врн, ххх опенспейс' и "\
+                    "Установить помогаторский адрес Врн, ххх опенспейс'.")
             
         # elif call.data == "add_fms_super":
         #     sql = """INSERT INTO supers (uid, department, last_name, first_name)
@@ -240,7 +240,7 @@ def add_user(bot, call):
             cursor.execute(sql)
             bot.send_message(
                     chat_id=uid,
-                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Екб/Влг, ххх кабинет'.")
+                    text="Тебя добавили. Для налача работы напиши боту 'Установить адрес Врн, ххх опенспейс'.")
         
         elif call.data == "add_pip":
             sql = """INSERT INTO staff (uid, department, last_name, first_name)

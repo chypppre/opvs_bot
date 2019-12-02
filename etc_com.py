@@ -14,7 +14,7 @@ from misc import DB_DIR, supers, CHATS_ID
 def etc_com(bot, message):
 
     dep = get_department("staff", message.from_user.id)
-    gg_path = "C:\\bot\\pics\\"
+    gg_path = "/home/irc/bot/pics/"
     kbrd = create_keyboard(dep)
 
 # -----------------------------------------------------------------------------

@@ -125,7 +125,7 @@ def create_keyboard(department):
     oo_btn = types.KeyboardButton(text="ОО")
     if department == 1:
         kbrd.row(ping_btn, dezh_btn)
-        kbrd.row(etc_btn, change_btn)
+        kbrd.row(etc_btn)#, change_btn)
         return kbrd
     elif department == 3:
         kbrd.row(ping_btn, dezh_btn)
@@ -429,7 +429,7 @@ def group_message(bot, text, uid):
                 chat_id=uid,
                 text="Не доставлено {}".format(user))
 
-    elif group == "суперыэкстерн":
+    elif group == "суперыкэ":
         sql = "SELECT uid FROM supers WHERE department=1"
         for user in mycursor.execute(sql).fetchall():
             users.add(user[0])
@@ -817,7 +817,7 @@ def make_statistic(department):
     """Состаление отчета по пингам за сутки"""
     if department == 1:
         # путь до папки с отчетами
-        PATH = REPORTS_DIR+"ЭКСТЕРН_{}_{}.xlsx".format(datetime.datetime.now().year, datetime.datetime.now().month)
+        PATH = REPORTS_DIR+"КЭ_{}_{}.xlsx".format(datetime.datetime.now().year, datetime.datetime.now().month)
         # перечисление нужных столбцов для отчета
         needed_losts = True
         needed_kcrs = True
@@ -991,48 +991,48 @@ def make_statistic(department):
     #    elif department in [5,6]:
     #        ws.append(["----","ИТОГО", t_pings, t_f_dezh, t_h_dezh, t_total])
 
-    if department != 3:
-        ws.append(["--------------"])
-        ws.append(["ПОМОГАТОРСКАЯ"])
-        ws.append(["--------------"])
-        sql = """SELECT last_name, first_name, pings, knowledges, checks, f_dezh, h_dezh, study_yes, study_no, break_time, reboot_yes, reboot_no, op_time, visions, pzs, hards_yes, hards_no
-                FROM helpers
-                WHERE department={}
-                ORDER BY last_name ASC""".format(department)
-        mycursor.execute(sql)
-        he_list = mycursor.fetchall()
-        if department == 1:
-            ws.append(["Фамилия","Имя","Пинги","Знания","Гл.деж","Вр.деж","Обуч./Прос(ДА)","Обуч./Прос(НЕТ)","Перерыв","Перезагрузка(ДА)","Перезагрузка(НЕТ)","ОП","Визия","Проверка знаний","Всего"])
-    #    elif department == 2:
-    #        ws.append(["Фамилия","Имя","Пинги","Знания","Гл.деж","Вр.деж","Визия","Проверка знаний","Всего"])
-    #    elif department in [5,6]:
-    #        ws.append(["Фамилия","Имя","Пинги","Гл.деж","Вр.деж","Всего"])
-        for row in he_list:
-            try:
-                last_name, first_name, pings, knowledges, checks, f_dezh, h_dezh, study_yes, study_no, break_time, reboot_yes, reboot_no, op_time, visions, pzs, hards_yes, hards_no = row
-                summary = pings+knowledges+checks+f_dezh+h_dezh+study_yes+study_no+break_time+reboot_yes+reboot_no+op_time+visions+pzs+hards_yes+hards_no
-                if summary != 0:
-                    if department == 1:
-                        ws.append([last_name, first_name, pings, knowledges, f_dezh, h_dezh, study_yes, study_no, break_time, reboot_yes, reboot_no, op_time, visions, pzs, summary])
-    #                elif department == 2:
-    #                    ws.append([last_name, first_name, pings, knowledges, f_dezh, h_dezh, visions, pzs, summary])
-    #                elif department in [5,6]:
-    #                    ws.append([last_name, first_name, pings, f_dezh, h_dezh, summary])
-            except:
-                pass
-        h_sql = """SELECT SUM(pings), SUM(knowledges), SUM(checks), SUM(f_dezh), SUM(h_dezh), SUM(study_yes), SUM(study_no), SUM(break_time), SUM(reboot_yes), SUM(reboot_no), SUM(op_time), SUM(visions), SUM(pzs), sum(hards_yes), sum(hards_no)
-                    FROM helpers
-                    WHERE department={}""".format(department)
-        mycursor.execute(h_sql)
-        h_data = mycursor.fetchall()[0]
-        t_pings, t_knowledges, t_checks, t_f_dezh, t_h_dezh, t_study_yes, t_study_no, t_break_time, t_reboot_yes, t_reboot_no, t_op_time, t_visions, t_pzs, t_hards_yes, t_hards_no = h_data
-        t_total = t_pings+t_knowledges+t_checks+t_f_dezh+t_h_dezh+t_study_yes+t_study_no+t_break_time+t_reboot_yes+t_reboot_no+t_op_time+t_visions+t_pzs+t_hards_yes+t_hards_no
-        if department == 1:
-            ws.append(["----","ИТОГО",t_pings, t_knowledges, t_f_dezh, t_h_dezh, t_study_yes, t_study_no, t_break_time, t_reboot_yes, t_reboot_no, t_op_time, t_visions, t_pzs, t_total])
-    #    elif department == 2:
-    #        ws.append(["----","ИТОГО",t_pings, t_knowledges, t_f_dezh, t_h_dezh, t_visions, t_pzs, t_total])
-    #    elif department in [5,6]:
-    #        ws.append(["----","ИТОГО",t_pings, t_f_dezh, t_h_dezh, t_total])
+    # if department != 3:
+    #     ws.append(["--------------"])
+    #     ws.append(["ПОМОГАТОРСКАЯ"])
+    #     ws.append(["--------------"])
+    #     sql = """SELECT last_name, first_name, pings, knowledges, checks, f_dezh, h_dezh, study_yes, study_no, break_time, reboot_yes, reboot_no, op_time, visions, pzs, hards_yes, hards_no
+    #             FROM helpers 
+    #             WHERE department={}
+    #             ORDER BY last_name ASC""".format(department)
+    #     mycursor.execute(sql)
+    #     he_list = mycursor.fetchall()
+    #     if department == 1:
+    #         ws.append(["Фамилия","Имя","Пинги","Знания","Гл.деж","Вр.деж","Обуч./Прос(ДА)","Обуч./Прос(НЕТ)","Перерыв","Перезагрузка(ДА)","Перезагрузка(НЕТ)","ОП","Визия","Проверка знаний","Всего"])
+    #     # elif department == 2:
+    #     #     ws.append(["Фамилия","Имя","Пинги","Знания","Гл.деж","Вр.деж","Визия","Проверка знаний","Всего"])
+    #     # elif department in [5,6]:
+    #     #     ws.append(["Фамилия","Имя","Пинги","Гл.деж","Вр.деж","Всего"])
+    #     for row in he_list:
+    #         try:
+    #             last_name, first_name, pings, knowledges, checks, f_dezh, h_dezh, study_yes, study_no, break_time, reboot_yes, reboot_no, op_time, visions, pzs, hards_yes, hards_no = row
+    #             summary = pings+knowledges+checks+f_dezh+h_dezh+study_yes+study_no+break_time+reboot_yes+reboot_no+op_time+visions+pzs+hards_yes+hards_no
+    #             if summary != 0:
+    #                 if department == 1:
+    #                     ws.append([last_name, first_name, pings, knowledges, f_dezh, h_dezh, study_yes, study_no, break_time, reboot_yes, reboot_no, op_time, visions, pzs, summary])
+    #                 # elif department == 2:
+    #                 #     ws.append([last_name, first_name, pings, knowledges, f_dezh, h_dezh, visions, pzs, summary])
+    #                 # elif department in [5,6]:
+    #                 #     ws.append([last_name, first_name, pings, f_dezh, h_dezh, summary])    
+    #         except:
+    #             pass
+    #     h_sql = """SELECT SUM(pings), SUM(knowledges), SUM(checks), SUM(f_dezh), SUM(h_dezh), SUM(study_yes), SUM(study_no), SUM(break_time), SUM(reboot_yes), SUM(reboot_no), SUM(op_time), SUM(visions), SUM(pzs), sum(hards_yes), sum(hards_no)
+    #                 FROM helpers 
+    #                 WHERE department={}""".format(department)
+    #     mycursor.execute(h_sql)
+    #     h_data = mycursor.fetchall()[0]
+    #     t_pings, t_knowledges, t_checks, t_f_dezh, t_h_dezh, t_study_yes, t_study_no, t_break_time, t_reboot_yes, t_reboot_no, t_op_time, t_visions, t_pzs, t_hards_yes, t_hards_no = h_data
+    #     t_total = t_pings+t_knowledges+t_checks+t_f_dezh+t_h_dezh+t_study_yes+t_study_no+t_break_time+t_reboot_yes+t_reboot_no+t_op_time+t_visions+t_pzs+t_hards_yes+t_hards_no
+    #     if department == 1:
+    #         ws.append(["----","ИТОГО",t_pings, t_knowledges, t_f_dezh, t_h_dezh, t_study_yes, t_study_no, t_break_time, t_reboot_yes, t_reboot_no, t_op_time, t_visions, t_pzs, t_total])
+    #     # elif department == 2:
+    #     #     ws.append(["----","ИТОГО",t_pings, t_knowledges, t_f_dezh, t_h_dezh, t_visions, t_pzs, t_total])
+    #     # elif department in [5,6]:
+    #     #     ws.append(["----","ИТОГО",t_pings, t_f_dezh, t_h_dezh, t_total])
 
     else:
         ws.append(["--------------"])

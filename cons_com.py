@@ -45,8 +45,6 @@ def cons_com(bot, message):
     if department == 1:
         keyboard.row(ping_btn)
         keyboard.row(knowledge_ping_btn)
-        keyboard.row(lost_btn)
-        keyboard.row(kcr_btn)
         # keyboard.row(exp_btn)
         # keyboard.row(exp_ud_btn)
     elif department == 3:
@@ -57,7 +55,7 @@ def cons_com(bot, message):
 
     # ОТПРАВКА ПИНГА
     # Только для отдела УЦ
-    if department == 1:
+    # if department == 1:
         # Пожелания, замечания по работе и ответы супервизоров
     #    if message.chat.id not in CHATS_ID and message.text == "Обратная связь":
     #        keyboard = types.InlineKeyboardMarkup()
@@ -97,7 +95,7 @@ def cons_com(bot, message):
         break_btn = types.InlineKeyboardButton(
                 text="Перерыв.", callback_data="request_dezh_break_time")
         reboot_btn = types.InlineKeyboardButton(
-                text="Привязка.", callback_data="request_dezh_reboot")
+                text="Супервизия.", callback_data="request_dezh_reboot")
         op_btn = types.InlineKeyboardButton(
                 text="Блиц-опрос.", callback_data="request_dezh_op_time")
         # miss_btn = types.InlineKeyboardButton(
@@ -132,13 +130,13 @@ def cons_com(bot, message):
         test_btn = types.InlineKeyboardButton(
                 text="Тест",
                 callback_data="test")
-        about_btn = types.InlineKeyboardButton(
-                text="About",
-                callback_data="about")
+ #       about_btn = types.InlineKeyboardButton(
+ #               text="About",
+ #               callback_data="about")
         keyboard.row(meme_btn)
         keyboard.row(home_btn)
         keyboard.row(test_btn)
-        keyboard.row(about_btn)
+ #       keyboard.row(about_btn)
         bot.send_message(
                 chat_id=chat_id_from,
                 text='Прочие команды:',

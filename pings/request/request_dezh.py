@@ -82,7 +82,7 @@ def request_dezh(bot, call):
                 text="Откликнуться.", callback_data="response_dezh_break_time")
         kbrd.row(ans_btn)
 
-        super_text = "{} {}\n'Я хотел пойти поесть вовремя, но тут такое произшло!', говорит {}. [{},{}]".format(tag, cons_adress, user_info, cons_uid, message_id)
+        super_text = "{} {}\n'Я хотел пойти в перерыв, но тут такое произшло!', говорит {}. [{},{}]".format(tag, cons_adress, user_info, cons_uid, message_id)
         d_type = 'break_time'
         cons_text = "Ждем-с ответа..."\
                     "\nПримерное время ожидания ответа {} мин.".format(waiting_time)

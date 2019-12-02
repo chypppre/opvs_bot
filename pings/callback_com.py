@@ -7,7 +7,7 @@ from misc import PICS_DIR, DB_DIR
 import fix_break
 
 
-#def other_callbacks(bot, call):
+def other_callbacks(bot, call):
 #    if call.data == "bro":
         # Ярика 265492010 Москвина 291100413
 #            photos = []
@@ -19,7 +19,7 @@ import fix_break
 #        except Exception as e:
 #            print("IN other_callbacks\n{}".format(e))
 
-    elif call.data == 'memes':
+    if call.data == 'memes':
         memes = types.InlineKeyboardMarkup()
         police_btn = types.InlineKeyboardButton(text='Полиция!', callback_data='police')
         bogdan_btn = types.InlineKeyboardButton(text='Дядя Богдан!', callback_data='bogdan')
@@ -154,14 +154,16 @@ import fix_break
                     message_id=call.message.message_id,
                     text="Все ОК! Твой UID = {}".format(call.from_user.id))
 
-    elif call.data == 'about':
-        kbrd = types.InlineKeyboardMarkup()
-        about_btn = types.InlineKeyboardButton(
-                text="Сервис отзыва.",
-                url='')
-        kbrd.row(about_btn)
-        bot.edit_message_text(
-                chat_id=call.from_user.id,
-                message_id=call.message.message_id,
-                text='@fancyAndBeauty - Переписал бота и дописываю его при появлении новых идей.'
-                reply_markup=kbrd)
+    # elif call.data == 'about':
+    #     kbrd = types.InlineKeyboardMarkup()
+    #     about_btn = types.InlineKeyboardButton(
+    #             text="Сервис отзыва.",
+    #             url='')
+    #     kbrd.row(about_btn)
+    #     bot.edit_message_text(
+    #             chat_id=call.from_user.id,
+    #             message_id=call.message.message_id,
+    #             text='@fancyAndBeauty - Переписал бота и дописываю его при появлении новых идей.'\
+    #                 '\nГенерируем идеи.',
+    #             reply_markup=kbrd)
+                

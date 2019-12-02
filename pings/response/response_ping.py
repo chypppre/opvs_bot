@@ -102,20 +102,6 @@ def response_ping(bot, call):
                     chat_id=admin_chat_id,
                     text="{}, тебе не хватает скила, ответить может только супервизор.".format(responser_full_name))
 
-    # ОТВЕТ КЦР
-    elif call.data == 'response_ping_kcr':
-        if is_super(responser_uid):
-            cons_text = "{} ответил что пойдет разбираться с клятi КЦР. Найти меня можно: {}.".format(
-                            responser_full_name,
-                            responser_adress)
-            super_text = "{} ответил {}, что пойдет разбираться с клятi КЦР.".format(responser_full_name, cons_full_name)
-            p_type = 'kcrs'
-            console_text = "КЦР разобран {}\n".format(responser_full_name)
-        else:
-            bot.send_message(
-                    chat_id=admin_chat_id,
-                    text="{}, тебе не хватает скила, ответить может только супервизор.".format(responser_full_name))
-
     # ОТВЕТ на проверку письма или инц-а
     elif call.data == 'response_ping_check':        
         cons_text = "{} ответил что пойдет проверить что у тебя написано. Найти меня можно: {}.".format(
